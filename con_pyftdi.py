@@ -173,20 +173,20 @@ class PyFtdiBootloader(JennicProtocol):
     """
     def dev_reset(self):
         # RESET
-        self.ser.set_bitmode(0xFB, 0x20)
+        self.ser.set_bitmode(0xFB, self.ser.BitMode.CBUS)
         sleep(0.05)
-        self.ser.set_bitmode(0xFF, 0x20)
+        self.ser.set_bitmode(0xFF, self.ser.BitMode.CBUS)
 
     """
         TWE をプログラムモードに設定する
     """
     def dev_prog(self):
         # FIRMWARE PROGRAM'.',
-        self.ser.set_bitmode(0xF3, 0x20)
+        self.ser.set_bitmode(0xF3, self.ser.BitMode.CBUS)
         sleep(0.05)
-        self.ser.set_bitmode(0xF7, 0x20)
+        self.ser.set_bitmode(0xF7, self.ser.BitMode.CBUS)
         sleep(0.2)
-        self.ser.set_bitmode(0xFF, 0x20)
+        self.ser.set_bitmode(0xFF, self.ser.BitMode.CBUS)
         sleep(0.05)
 
     """
